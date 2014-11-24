@@ -256,6 +256,7 @@ ColVis.prototype = {
 					"ColVis_Button ColVis_MasterButton ui-button ui-state-default"
 			} )
 			.append( '<span>'+this.s.buttonText+'</span>' )
+			.append( '<span class="dropup"><span class="caret"></span></span>' )
 			.bind( this.s.activate=="mouseover" ? "mouseover" : "click", function (e) {
 				e.preventDefault();
 				that._fnCollectionShow();
@@ -812,11 +813,9 @@ ColVis.prototype = {
 				nHidden.style.left = (iDocWidth-iDivWidth)+"px";
 			}
             
-            if (iDivY + iDivHeight > iDocHeight)
-			{
-				nHidden.style.top = parseInt(oPos.top - iDivHeight, 10) +"px";
-			}
-		}
+				nHidden.style.top = parseInt(oPos.top - iDivHeight - 2, 10) +"px";
+
+        }
 
 		this.s.hidden = false;
 	},
