@@ -32,7 +32,7 @@ ColVis = function( oDTSettings, oInit )
 	/* Santiy check that we are a new instance */
 	if ( !this.CLASS || this.CLASS != "ColVis" )
 	{
-		alert( "Warning: ColVis must be initialised with the keyword 'new'" );
+		warningAlert( "Warning: ColVis must be initialised with the keyword 'new'" );
 	}
 	
 	if ( typeof oInit == 'undefined' )
@@ -842,6 +842,10 @@ ColVis.prototype = {
 			{
 				nHidden.style.left = (iDocWidth-iDivWidth)+"px";
 			}
+			if (iDivY + iDivHeight > iDocHeight)
+			{
+				nHidden.style.top = parseInt(oPos.top - iDivHeight, 10) +"px";
+			}
 		}
 		
 		/* This results in a very small delay for the end user but it allows the animation to be
@@ -1007,7 +1011,7 @@ if ( typeof $.fn.dataTable == "function" &&
 }
 else
 {
-	alert( "Warning: ColVis requires DataTables 1.7 or greater - www.datatables.net/download");
+	warningAlert( "Warning: ColVis requires DataTables 1.7 or greater - www.datatables.net/download");
 }
 
 })(jQuery);
