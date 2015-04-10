@@ -622,7 +622,7 @@ ColVis.prototype = {
 				if ( dt.oFeatures.bServerSide )
 				{
 					that.s.dt.oInstance.fnSetColumnVis( i, showHide, false );
-					that.s.dt.oInstance.fnAdjustColumnSizing( false );
+					that.s.dt.oInstance.fnAdjustColumnSizing( true );
 					if (dt.oScroll.sX !== "" || dt.oScroll.sY !== "" )
 					{
 						that.s.dt.oInstance.oApi._fnScrollDraw( that.s.dt );
