@@ -1,11 +1,11 @@
-/*! ColVis 1.1.2-dev
+/*! ColVis 1.1.1
  * ©2010-2014 SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     ColVis
  * @description Controls for column visibility in DataTables
- * @version     1.1.2-dev
+ * @version     1.1.1
  * @file        dataTables.colReorder.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
@@ -41,7 +41,7 @@ var ColVis = function( oDTSettings, oInit )
 	/* Santiy check that we are a new instance */
 	if ( !this.CLASS || this.CLASS != "ColVis" )
 	{
-		alert( "Warning: ColVis must be initialised with the keyword 'new'" );
+		warningAlert( "Warning: ColVis must be initialised with the keyword 'new'" );
 	}
 
 	if ( typeof oInit == 'undefined' )
@@ -49,10 +49,8 @@ var ColVis = function( oDTSettings, oInit )
 		oInit = {};
 	}
 
-	var camelToHungarian = $.fn.dataTable.camelToHungarian;
-	if ( camelToHungarian ) {
-		camelToHungarian( ColVis.defaults, ColVis.defaults, true );
-		camelToHungarian( ColVis.defaults, oInit );
+	if ( $.fn.dataTable.camelToHungarian ) {
+		$.fn.dataTable.camelToHungarian( ColVis.defaults, oInit );
 	}
 
 
@@ -258,6 +256,7 @@ ColVis.prototype = {
 					"ColVis_Button ColVis_MasterButton ui-button ui-state-default"
 			} )
 			.append( '<span>'+this.s.buttonText+'</span>' )
+			.append( '<span class="dropup"><span class="caret"></span></span>' )
 			.bind( this.s.activate=="mouseover" ? "mouseover" : "click", function (e) {
 				e.preventDefault();
 				that._fnCollectionShow();
@@ -813,7 +812,10 @@ ColVis.prototype = {
 			{
 				nHidden.style.left = (iDocWidth-iDivWidth)+"px";
 			}
-		}
+            
+				nHidden.style.top = parseInt(oPos.top - iDivHeight - 2, 10) +"px";
+
+        }
 
 		this.s.hidden = false;
 	},
@@ -1048,7 +1050,7 @@ ColVis.prototype.CLASS = "ColVis";
  *  @type      String
  *  @default   See code
  */
-ColVis.VERSION = "1.1.2-dev";
+ColVis.VERSION = "1.1.1";
 ColVis.prototype.VERSION = ColVis.VERSION;
 
 
@@ -1078,7 +1080,7 @@ if ( typeof $.fn.dataTable == "function" &&
 }
 else
 {
-	alert( "Warning: ColVis requires DataTables 1.7 or greater - www.datatables.net/download");
+	warningAlert( "Warning: ColVis requires DataTables 1.7 or greater - www.datatables.net/download");
 }
 
 
