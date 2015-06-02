@@ -620,8 +620,8 @@ ColVis.prototype = {
 				// Optimisation for server-side processing when scrolling - don't do a full redraw
 				if ( dt.oFeatures.bServerSide )
 				{
-					that.s.dt.oInstance.fnSetColumnVis( i, showHide, false );
-					that.s.dt.oInstance.fnAdjustColumnSizing( true );
+					that.s.dt.oInstance.fnSetColumnVis( i, showHide, false, true );
+					that.s.dt.oInstance.fnAdjustColumnSizing( false );
 					if (dt.oScroll.sX !== "" || dt.oScroll.sY !== "" )
 					{
 						that.s.dt.oInstance.oApi._fnScrollDraw( that.s.dt );
