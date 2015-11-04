@@ -635,7 +635,7 @@ ColVis.prototype = {
 
 				$.fn.dataTableExt.iApiIndex = oldIndex; /* Restore */
 
-				if ( e.target.nodeName.toLowerCase() === 'input' && that.s.fnStateChange !== null )
+				if ( (e.target.nodeName.toLowerCase() === 'input' || e.target.nodeName.toLowerCase() === 'span') && that.s.fnStateChange !== null )
 				{
 					that.s.fnStateChange.call( that, i, showHide );
 				}
